@@ -23,6 +23,16 @@ sub fetch {
     return $data;
 }
 
+sub store {
+    my ($self, $key, $data) = @_;
+    croak 'Attempting to store non-HASH data'
+      unless reftype $data eq 'HASH';
+    
+    my $filename = file($self->directory, $key);
+    DumpFile($filename, $data);
+    return;
+}
+
 1;
 __END__
 
