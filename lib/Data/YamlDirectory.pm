@@ -6,6 +6,8 @@ use YAML::Syck qw(DumpFile LoadFile);
 use MooseX::Types::Path::Class qw(Dir);
 use Path::Class qw(file);
 
+our $VERSION = '0.01';
+
 has 'directory' => (
     is       => 'ro',
     isa      => Dir,
