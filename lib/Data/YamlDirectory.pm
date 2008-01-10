@@ -42,4 +42,43 @@ __END__
 
 Data::YamlDirectory - store key => { hash } pairs on disk as a directory of YAML files
 
-=cut
+=head1 SYNOPSIS
+
+  my $ydr = Data::YamlDirectory(directory => '/foo/bar');
+  $ydr->store('foo', { this => [qw/is a hash/] });
+  ...
+  $ydr->fetch('foo'); # { this => [qw/is a hash] }
+  
+
+=head1 DESCRIPTION
+
+This module is a quick-n-easy way of storing human-understandable key
+=> value pairs to disk.  This code is factored out of
+L<Angerwhale|Angerwhale>, where it's used to store user data to disk
+in a format that's easy for the blog administrator to edit if the need
+arises.
+
+=head1 METHODS
+
+=head2 store(key, { hash })
+
+Stores C<hash> as C<key>.  Croaks if there is a write error or if
+C<hash> isn't a hash reference.
+
+=head2 fetch(key)
+
+Retrives the hash associated with C<key>.  Returns undef (even in list
+context) if the key is not on disk.  Dies if the file is unreadable,
+there is a YAML parse error, or the deserialized structure isn't a
+hash.
+
+=head1 AUTHOR
+
+Jonathan Rockway
+
+=head1 COPYRIGHT
+
+Copyright (c) 2008 Infinity Interactive, Inc.
+
+This module is Free Software, you may redistribute it under the same
+terms as Perl itself.
