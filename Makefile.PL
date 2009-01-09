@@ -9,6 +9,7 @@ requires 'Path::Class';
 requires 'Scalar::Util';
 requires 'YAML::Syck';
 build_requires 'Directory::Scratch';
+build_requires 'Test::Exception';
 build_requires 'Test::More';
 build_requires 'ok';
 
